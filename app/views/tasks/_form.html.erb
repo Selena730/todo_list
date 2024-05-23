@@ -1,0 +1,31 @@
+<%= form_with(model: @task, local: true) do |form| %>
+    <% if @task.errors.any? %>
+    <h2><%= pluralize(@task.errors.count, "error") %> this task can't be saved:</h2>
+    <ul>
+        <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+    <% end %>
+
+    <div>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+    </div>
+    <div>
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+    </div>
+    <div>
+        <%= form.label :category %>
+        <%= form.text_field :category %>
+    </div>
+    <div>
+        <%= form.label :completed %>
+        <%= form.check_box :completed %>
+    </div>
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
+<%= link_to 'Back', tasks_path %>
